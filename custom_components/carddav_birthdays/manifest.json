@@ -1,0 +1,12 @@
+{
+  "domain": "carddav_birthdays",
+  "name": "CardDAV Birthdays",
+  "codeowners": ["@CHANGEME"],
+  "config_flow": true,
+  "documentation": "https://github.com/CHANGEME/homeassistant-carddav-birthdays",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/CHANGEME/homeassistant-carddav-birthdays/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}

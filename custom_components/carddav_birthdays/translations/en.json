@@ -1,0 +1,65 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CardDAV server",
+        "description": "For Infomaniak: URL https://sync.infomaniak.com/, the uppercase username given by the sync assistant (e.g. AB12345) and an application password created on config.infomaniak.com.",
+        "data": {
+          "url": "Server URL",
+          "username": "Username",
+          "password": "Password (or application password)"
+        }
+      },
+      "addressbooks": {
+        "title": "Address books",
+        "description": "Select the address books whose birthdays should show up in the calendar.",
+        "data": {
+          "addressbooks": "Address books"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Password expired",
+        "description": "Enter a new password for {username}.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the CardDAV server.",
+      "invalid_auth": "Invalid username or password."
+    },
+    "abort": {
+      "already_configured": "This account is already configured.",
+      "reauth_successful": "Password updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "data": {
+          "update_interval_hours": "Sync interval (hours)",
+          "show_age": "Show age in the event title"
+        },
+        "data_description": {
+          "update_interval_hours": "24 for daily, 168 for weekly."
+        }
+      }
+    }
+  },
+  "entity": {
+    "calendar": {
+      "birthdays": {
+        "name": "Birthdays"
+      }
+    }
+  },
+  "event": {
+    "with_age": "{name} ({age})",
+    "with_age_one": "{name} ({age})",
+    "description": "Birthday",
+    "description_with_date": "Birthday — born on {date}",
+    "date_format": "%Y-%m-%d"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Serveur CardDAV",
+        "description": "Pour Infomaniak : URL https://sync.infomaniak.com/, identifiant en majuscules fourni par l'assistant de synchronisation (ex. AB12345) et un mot de passe d'application créé sur config.infomaniak.com.",
+        "data": {
+          "url": "URL du serveur",
+          "username": "Identifiant",
+          "password": "Mot de passe (ou mot de passe d'application)"
+        }
+      },
+      "addressbooks": {
+        "title": "Carnets d'adresses",
+        "description": "Sélectionnez les carnets dont les anniversaires doivent apparaître dans le calendrier.",
+        "data": {
+          "addressbooks": "Carnets d'adresses"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Mot de passe expiré",
+        "description": "Saisissez un nouveau mot de passe pour {username}.",
+        "data": {
+          "password": "Mot de passe"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Connexion au serveur CardDAV impossible.",
+      "invalid_auth": "Identifiant ou mot de passe refusé."
+    },
+    "abort": {
+      "already_configured": "Ce compte est déjà configuré.",
+      "reauth_successful": "Mot de passe mis à jour."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "data": {
+          "update_interval_hours": "Fréquence de synchronisation (heures)",
+          "show_age": "Afficher l'âge dans le titre de l'événement"
+        },
+        "data_description": {
+          "update_interval_hours": "24 pour une synchronisation quotidienne, 168 pour hebdomadaire."
+        }
+      }
+    }
+  },
+  "entity": {
+    "calendar": {
+      "birthdays": {
+        "name": "Anniversaires"
+      }
+    }
+  },
+  "event": {
+    "with_age": "{name} ({age} ans)",
+    "with_age_one": "{name} ({age} an)",
+    "description": "Anniversaire",
+    "description_with_date": "Anniversaire — né(e) le {date}",
+    "date_format": "%d/%m/%Y"
+  }
+}
