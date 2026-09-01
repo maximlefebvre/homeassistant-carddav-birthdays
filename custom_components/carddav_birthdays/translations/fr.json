@@ -40,10 +40,12 @@
         "title": "Options",
         "data": {
           "update_interval_hours": "Fréquence de synchronisation (heures)",
-          "show_age": "Afficher l'âge dans le titre de l'événement"
+          "show_age": "Afficher l'âge dans le titre de l'événement",
+          "name_format": "Ordre du nom affiché"
         },
         "data_description": {
-          "update_interval_hours": "24 pour une synchronisation quotidienne, 168 pour hebdomadaire."
+          "update_interval_hours": "24 pour une synchronisation quotidienne, 168 pour hebdomadaire.",
+          "name_format": "Recompose le nom depuis le champ N de la vCard. Utile quand le champ FN d'Infomaniak est enregistré en « Nom Prénom »."
         }
       }
     }
@@ -61,5 +63,14 @@
     "description": "Anniversaire",
     "description_with_date": "Anniversaire — né(e) le {date}",
     "date_format": "%d/%m/%Y"
+  },
+  "selector": {
+    "name_format": {
+      "options": {
+        "given_family": "Prénom Nom",
+        "family_given": "Nom Prénom",
+        "fn": "Champ FN de la fiche, tel quel"
+      }
+    }
   }
 }

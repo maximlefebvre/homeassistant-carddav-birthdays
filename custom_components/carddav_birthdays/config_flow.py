@@ -32,12 +32,15 @@ from homeassistant.helpers.selector import (
 from .carddav import AddressBook, CardDavAuthError, CardDavClient, CardDavError
 from .const import (
     CONF_ADDRESSBOOKS,
+    CONF_NAME_FORMAT,
     CONF_SHOW_AGE,
     CONF_UPDATE_INTERVAL,
+    DEFAULT_NAME_FORMAT,
     DEFAULT_SHOW_AGE,
     DEFAULT_UPDATE_INTERVAL,
     DEFAULT_URL,
     DOMAIN,
+    NAME_FORMATS,
 )
 from .coordinator import CardDavBirthdaysConfigEntry
 
@@ -121,6 +124,7 @@ class CardDavBirthdaysConfigFlow(ConfigFlow, domain=DOMAIN):
                 options={
                     CONF_UPDATE_INTERVAL: DEFAULT_UPDATE_INTERVAL,
                     CONF_SHOW_AGE: DEFAULT_SHOW_AGE,
+                    CONF_NAME_FORMAT: DEFAULT_NAME_FORMAT,
                 },
             )
 
@@ -200,6 +204,7 @@ class CardDavBirthdaysOptionsFlow(OptionsFlow):
                 data={
                     CONF_UPDATE_INTERVAL: int(user_input[CONF_UPDATE_INTERVAL]),
                     CONF_SHOW_AGE: user_input[CONF_SHOW_AGE],
+                    CONF_NAME_FORMAT: user_input[CONF_NAME_FORMAT],
                 }
             )
 
@@ -218,6 +223,16 @@ class CardDavBirthdaysOptionsFlow(OptionsFlow):
                     CONF_SHOW_AGE,
                     default=options.get(CONF_SHOW_AGE, DEFAULT_SHOW_AGE),
                 ): BooleanSelector(),
+                vol.Required(
+                    CONF_NAME_FORMAT,
+                    default=options.get(CONF_NAME_FORMAT, DEFAULT_NAME_FORMAT),
+                ): SelectSelector(
+                    SelectSelectorConfig(
+                        options=NAME_FORMATS,
+                        mode=SelectSelectorMode.DROPDOWN,
+                        translation_key=CONF_NAME_FORMAT,
+                    )
+                ),
             }
         )
         return self.async_show_form(step_id="init", data_schema=schema)

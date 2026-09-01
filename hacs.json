@@ -1,5 +1,5 @@
 {
-  "name": "CardDAV Birthdays",
+  "name": "CardDAV Birthdays to Calendar",
   "content_in_root": false,
   "render_readme": true,
   "homeassistant": "2024.12.0"

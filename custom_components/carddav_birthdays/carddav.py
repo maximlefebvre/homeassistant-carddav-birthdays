@@ -67,13 +67,19 @@ class AddressBook:
 
 @dataclass(frozen=True, slots=True)
 class Birthday:
-    """Un anniversaire extrait d'une vCard."""
+    """Un anniversaire extrait d'une vCard.
+
+    `name` reprend le champ FN tel quel ; `given` et `family` viennent du champ
+    structuré N et permettent de recomposer le nom dans l'ordre souhaité.
+    """
 
     uid: str
     name: str
     month: int
     day: int
     year: int | None = None
+    given: str = ""
+    family: str = ""
 
     def occurrence(self, year: int) -> date:
         """Date de l'anniversaire pour une année donnée (29/02 -> 28/02)."""
@@ -434,13 +440,14 @@ def parse_vcard(raw: str) -> Birthday | None:
         return None
     month, day, year = parsed
 
-    name = ""
-    if "FN" in fields:
-        name = _unescape(fields["FN"][0])
-    if not name and "N" in fields:
+    given = family = ""
+    if "N" in fields:
         parts = [_unescape(part) for part in _split_unescaped(fields["N"][0], ";")]
         family = parts[0] if parts else ""
         given = parts[1] if len(parts) > 1 else ""
+
+    name = _unescape(fields["FN"][0]) if "FN" in fields else ""
+    if not name:
         name = " ".join(part for part in (given, family) if part)
     if not name:
         return None
@@ -449,4 +456,12 @@ def parse_vcard(raw: str) -> Birthday | None:
     if not uid:
         uid = hashlib.sha1(f"{name}-{year}-{month}-{day}".encode()).hexdigest()
 
-    return Birthday(uid=uid, name=name, month=month, day=day, year=year)
+    return Birthday(
+        uid=uid,
+        name=name,
+        month=month,
+        day=day,
+        year=year,
+        given=given,
+        family=family,
+    )

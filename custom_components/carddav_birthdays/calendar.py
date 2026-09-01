@@ -16,9 +16,13 @@ from homeassistant.util import dt as dt_util
 
 from .carddav import Birthday
 from .const import (
+    CONF_NAME_FORMAT,
     CONF_SHOW_AGE,
+    DEFAULT_NAME_FORMAT,
     DEFAULT_SHOW_AGE,
     DOMAIN,
+    NAME_FORMAT_FAMILY_GIVEN,
+    NAME_FORMAT_FN,
     LOOKAHEAD_DAYS,
     TRANSLATION_CATEGORY,
 )
@@ -105,15 +109,30 @@ class BirthdayCalendarEntity(CoordinatorEntity[BirthdayCoordinator], CalendarEnt
         """Afficher l'âge dans le titre de l'événement."""
         return self.coordinator.config_entry.options.get(CONF_SHOW_AGE, DEFAULT_SHOW_AGE)
 
+    def _display_name(self, birthday: Birthday) -> str:
+        """Recomposer le nom dans l'ordre choisi dans les options."""
+        name_format = self.coordinator.config_entry.options.get(
+            CONF_NAME_FORMAT, DEFAULT_NAME_FORMAT
+        )
+        if name_format == NAME_FORMAT_FN:
+            return birthday.name
+        if name_format == NAME_FORMAT_FAMILY_GIVEN:
+            ordered = (birthday.family, birthday.given)
+        else:
+            ordered = (birthday.given, birthday.family)
+        # Repli sur FN si la vCard n'a pas de champ N structuré.
+        return " ".join(part for part in ordered if part) or birthday.name
+
     def _summary(self, birthday: Birthday, age: int | None) -> str:
         """Composer le titre de l'événement."""
+        name = self._display_name(birthday)
         if not self._show_age or age is None or not 0 <= age <= 130:
-            return birthday.name
+            return name
         template = self._strings.with_age_one if age == 1 else self._strings.with_age
         try:
-            return template.format(name=birthday.name, age=age)
+            return template.format(name=name, age=age)
         except (KeyError, IndexError):
-            return f"{birthday.name} ({age})"
+            return f"{name} ({age})"
 
     def _description(self, birthday: Birthday) -> str:
         """Composer la description de l'événement."""

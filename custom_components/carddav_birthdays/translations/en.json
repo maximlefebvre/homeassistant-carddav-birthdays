@@ -40,10 +40,12 @@
         "title": "Options",
         "data": {
           "update_interval_hours": "Sync interval (hours)",
-          "show_age": "Show age in the event title"
+          "show_age": "Show age in the event title",
+          "name_format": "Displayed name order"
         },
         "data_description": {
-          "update_interval_hours": "24 for daily, 168 for weekly."
+          "update_interval_hours": "24 for daily, 168 for weekly.",
+          "name_format": "Rebuilds the name from the vCard's N field. Useful when the FN field is stored as \"family given\"."
         }
       }
     }
@@ -61,5 +63,14 @@
     "description": "Birthday",
     "description_with_date": "Birthday — born on {date}",
     "date_format": "%Y-%m-%d"
+  },
+  "selector": {
+    "name_format": {
+      "options": {
+        "given_family": "Given name + family name",
+        "family_given": "Family name + given name",
+        "fn": "The contact's FN field, as-is"
+      }
+    }
   }
 }
