@@ -8,7 +8,7 @@ ni de fichier `.ics` intermédiaire.
 - Une seule entité : `calendar.anniversaires`
 - Événements journée entière, développés sur toutes les années (passées et futures)
 - Âge affiché dans le titre quand la vCard contient l'année de naissance, dans la langue
-  de Home Assistant : `Renaud Lefebvre (39 ans)` en français, `Renaud Lefebvre (39)` en anglais
+  de Home Assistant : `Paul Lefebvre (39 ans)` en français, `Paul Lefebvre (39)` en anglais
 - Synchronisation configurable : toutes les 24 h par défaut, 168 h pour une fois par semaine
 - Lecture seule, aucune donnée envoyée ailleurs que vers votre serveur CardDAV
 

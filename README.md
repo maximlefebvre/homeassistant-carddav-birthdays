@@ -8,7 +8,7 @@ birthdays as a **native calendar entity** — no Remote Calendar and no intermed
 - A single entity: `calendar.birthdays`
 - All-day events, expanded across every year (past and future)
 - Age shown in the title when the vCard carries a birth year, in Home Assistant's language:
-  `Renaud Lefebvre (39)` in English, `Renaud Lefebvre (39 ans)` in French
+  `Paul Lefebvre (39)` in English, `Paul Lefebvre (39 ans)` in French
 - Configurable sync interval: every 24 h by default, 168 h for once a week
 - Read-only; nothing leaves your network except the calls to your own CardDAV server
 
