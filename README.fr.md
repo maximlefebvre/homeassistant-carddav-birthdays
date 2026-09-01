@@ -1,4 +1,4 @@
-# CardDAV Birthdays
+# CardDAV Birthdays to Calendar
 
 Intégration personnalisée Home Assistant qui synchronise un carnet d'adresses **CardDAV**
 (Infomaniak kSuite, Nextcloud, Radicale, Baïkal, iCloud…) et expose les anniversaires

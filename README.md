@@ -1,4 +1,4 @@
-# CardDAV Birthdays
+# CardDAV Birthdays to Calendar
 
 A Home Assistant custom integration that syncs a **CardDAV** address book
 (Infomaniak kSuite, Nextcloud, Radicale, Baïkal, iCloud…) and exposes your contacts'
